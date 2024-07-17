@@ -61,6 +61,11 @@ app.use("/api/v1/futureMeetings", futureMeetingRouter);
 app.use("/api/v1/suggestions", suggestionRoutes);
 app.use("/api/v1/aboutUs", aboutClubInfoRoutes);
 
+app.get("/").status(200).json({
+        status: "Success",
+        message: "Welcome to LoveReading Api",
+});
+
 // Unhandled Routes
 app.all("*", (req, res, next) => {
         //  Will directly move to Global Error handling middleware
