@@ -107,21 +107,19 @@ exports.refreshToken = catchAsync(async (req, res, next) => {
 
 exports.loginUser = catchAsync(async (req, res, next) => {
         const { email, password } = req.body;
-        console.log(email, password);
         const user = await User.findOne({ email }).select("+password");
 
         if (!user) {
                 return next(new AppError("No user found with such email", 404));
         }
 
-        console.log("User Password", user.password);
         // const matchPasswords = await bcrypt.compare(password, user.password);
 
         const passwordResult = await user.matchPassword(
                 password,
                 user.password,
         );
-        console.log("Login Match Password", passwordResult);
+
         if (user && !passwordResult) {
                 return next(new AppError("Incorrect Password", 401));
         }
