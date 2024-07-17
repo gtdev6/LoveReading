@@ -24,7 +24,11 @@ const app = express();
         }),
 );*/
 // Array of allowed origins
-const allowedOrigins = ["http://192.168.100.53:5173", "http://localhost:5173"];
+const allowedOrigins = [
+        "http://192.168.100.53:5173",
+        "http://localhost:5173",
+        "https://love-reading-g2xx42s0a-ghulam-tahirs-projects.vercel.app/",
+];
 
 const corsOptions = {
         origin: function (origin, callback) {
