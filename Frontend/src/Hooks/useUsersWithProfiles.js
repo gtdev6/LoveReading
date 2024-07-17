@@ -5,7 +5,7 @@ import API from "../Context/axiosSetup.js";
 const fetchUsersWithProfiles = async () => {
         const apiUrl =
                 process.env.NODE_ENV === "production"
-                        ? `${import.meta.env.VITE_API_URL}/api/v1/users/me`
+                        ? `${import.meta.env.VITE_API_URL}/api/v1/users/users-with-profiles`
                         : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/users-with-profiles`;
 
         const response = await API.get(apiUrl, {
