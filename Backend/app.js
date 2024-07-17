@@ -28,6 +28,7 @@ const allowedOrigins = [
         "http://192.168.100.53:5173",
         "http://localhost:5173",
         "https://love-reading-g2xx42s0a-ghulam-tahirs-projects.vercel.app/",
+        "*",
 ];
 
 const corsOptions = {
@@ -57,6 +58,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.get("/", (req, res) => {
+        console.log(req);
+
         res.status(200).json({
                 status: "Success",
                 message: "Welcome to LoveReading API",
