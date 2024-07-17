@@ -52,6 +52,13 @@ if (process.env.NODE_ENV === "development") {
         console.log("Morgan Started");
 }
 
+app.get("/", (req, res) => {
+        res.status(200).json({
+                status: "Success",
+                message: "Welcome to LoveReading API",
+        });
+});
+
 // 2) Routers
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/profile", profileRouter);
@@ -60,11 +67,6 @@ app.use("/api/v1/shortStories", shortStoriesRouter);
 app.use("/api/v1/futureMeetings", futureMeetingRouter);
 app.use("/api/v1/suggestions", suggestionRoutes);
 app.use("/api/v1/aboutUs", aboutClubInfoRoutes);
-
-app.get("/").status(200).json({
-        status: "Success",
-        message: "Welcome to LoveReading Api",
-});
 
 // Unhandled Routes
 app.all("*", (req, res, next) => {
