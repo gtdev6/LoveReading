@@ -1,0 +1,130 @@
+.textFieldRoot {
+        display: flex;
+        flex-direction: column;
+        /*border: 1px solid black;*/
+        width: 95%;
+        min-width: 70vw;
+        max-width: 100%;
+        min-height: 4.5rem;
+        gap: 0.4rem;
+        position: relative;
+}
+
+.labelStyle {
+        height: 10%;
+        min-height: 1rem;
+        /*font-family: 'Montserrat Medium', serif;*/
+        font-family: "Great Vibes", serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #76453b;
+}
+
+.inputFieldStyle {
+        height: 75%;
+        min-height: 3rem;
+        /*font-family: "poppins", serif;*/
+        font-family: "Nunito Medium", serif;
+        padding: 0 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid #76453b;
+        color: #76453b;
+
+        filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.5));
+
+        &::placeholder {
+                padding: 0 0.3rem;
+        }
+
+        &:focus-visible {
+                outline-color: #76453b;
+        }
+}
+
+@media screen and (min-width: 400px) and (max-width: 1080px) and (orientation: portrait) {
+        .labelStyle {
+                height: 2vw;
+                font-size: 2vw;
+        }
+
+        .inputFieldStyle {
+                height: 7vw;
+                border-radius: 1vw;
+                font-size: 2.4vw;
+        }
+}
+
+/*Media Queries for Tablets and Laptops*/
+/* Horizontal Tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        /* Styles for horizontal tablets */
+        .textFieldRoot {
+                max-width: 100%;
+                min-width: 100%;
+        }
+
+        .labelStyle {
+                font-size: 1.6vw;
+        }
+
+        .inputFieldStyle {
+                height: 4vw;
+                border-radius: 1vw;
+                font-size: 2vw;
+        }
+}
+
+/* Laptops with Smaller Screens */
+@media screen and (min-width: 1025px) and (max-width: 1365px) and (orientation: landscape) {
+        /* Styles for laptops with smaller screens */
+
+        .labelStyle {
+                font-size: 1.6rem;
+        }
+
+        .textFieldRoot {
+                min-width: 100%;
+                max-width: 100%;
+        }
+
+        .inputFieldStyle {
+                height: 3.8rem;
+                font-size: 1.6rem;
+        }
+}
+
+/* Laptops with Screen Widths Between 1366px and 1920px */
+@media screen and (min-width: 1366px) and (max-width: 1919px) and (orientation: landscape) {
+        /* Styles for laptops with screen widths between 1366px and 1920px */
+        .labelStyle {
+                font-size: 1.6rem;
+        }
+
+        .textFieldRoot {
+                min-width: 100%;
+                max-width: 100%;
+        }
+
+        .inputFieldStyle {
+                height: 3.8rem;
+                font-size: 1.6rem;
+        }
+}
+
+/* Full HD Screens */
+@media screen and (min-width: 1920px) and (orientation: landscape) {
+        /* Styles for full HD screens */
+        .labelStyle {
+                font-size: 1.6rem;
+        }
+
+        .textFieldRoot {
+                min-width: 100%;
+                max-width: 100%;
+        }
+
+        .inputFieldStyle {
+                height: 3.8rem;
+                font-size: 1.6rem;
+        }
+}

@@ -1,0 +1,170 @@
+.tabsRoot {
+        border: 2px solid black;
+        height: 94%;
+}
+
+.tabsList {
+        /*border: 2px solid red;*/
+        width: 100%;
+        height: 6%;
+        padding: 0.2rem;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #371f1a;
+
+        filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.5));
+}
+
+.tabsTab {
+        height: 100%;
+        flex-grow: 1;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*background-color: #9c5b4e;*/
+        background-color: #371f1a;
+        border: 1px solid #76453b;
+        border-radius: 4px;
+        cursor: pointer;
+}
+
+.tabsTab img {
+        width: 2.4rem;
+        height: 2rem;
+        max-height: 95%;
+        filter: drop-shadow(0 1px 0.1rem rgba(0, 0, 0, 1));
+}
+
+.tabsTab[data-active] {
+        background-color: #76453b;
+}
+
+.toolTipRoot {
+        position: absolute;
+        background-color: whitesmoke;
+        min-height: fit-content;
+        min-width: fit-content;
+        padding: 1rem 1.5rem;
+        border-radius: 1rem;
+        font-size: 1.6rem;
+        font-family: "Nunito", serif;
+        font-weight: 700;
+}
+
+.tabsPanel {
+        /*border: 2px solid red;*/
+        width: 100%;
+        height: calc(100% - 6%);
+        max-height: calc(100% - 6%);
+        overflow-y: scroll;
+}
+
+.createProfileLinkStyleContainer {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        /*border: 2px solid red;*/
+}
+
+.createProfileLinkStyle {
+        font-size: 2rem;
+        width: 60%;
+        color: #76453b;
+        font-weight: 800;
+        font-family: "Nunito", serif;
+        /*border: 2px solid blue;*/
+}
+
+.createProfileBtn {
+        padding: 0.5rem 1.4rem;
+        font-family: "Nunito", serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: #76453b;
+        border: 1px solid #76453b;
+        background-color: white;
+        border-radius: 1rem;
+        cursor: pointer;
+}
+
+.createProfileBtn:hover {
+        background-color: #76453b;
+        color: #fffaf1;
+}
+
+.createProfileBtn:active {
+        transform: translateY(1px) translateX(1px);
+}
+
+.shortStoriesMessageContainer,
+.noFutureMeetingYetContainer {
+        height: calc(100% - 6%);
+        width: 100%;
+}
+
+.shortStoriesMessageWrapper,
+.noFutureMeetingYetWrapper {
+        width: 100%;
+
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+}
+
+.shortStoriesMessageWrapper p,
+.noFutureMeetingYetWrapper p {
+        font-family: "Nunito", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #76453b;
+}
+
+/*For mobiles whose screens are larger*/
+@media screen and (min-width: 400px) and (max-width: 1080px) and (orientation: portrait) {
+        .tabsTab span {
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+        }
+
+        .tabsTab span img {
+                /*border: 2px solid blue;*/
+                width: auto;
+                aspect-ratio: 1/1;
+                min-height: 50% !important;
+                min-width: 40% !important;
+        }
+}
+
+/* Horizontal Tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        /* Styles for horizontal tablets */
+}
+
+/* Laptops with Smaller Screens */
+@media screen and (min-width: 1025px) and (max-width: 1365px) and (orientation: landscape) {
+        /* Styles for laptops with smaller screens */
+}
+
+/* Laptops with Screen Widths Between 1366px and 1920px */
+@media screen and (min-width: 1366px) and (max-width: 1919px) and (orientation: landscape) {
+        /* Styles for laptops with screen widths between 1366px and 1920px */
+}
+
+/* Full HD Screens */
+@media screen and (min-width: 1920px) and (orientation: landscape) {
+        /* Styles for full HD screens */
+}

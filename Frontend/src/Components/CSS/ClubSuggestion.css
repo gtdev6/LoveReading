@@ -1,0 +1,120 @@
+.clubSuggestionsRootContainer {
+        /*border: 1px solid red;*/
+        height: calc(100% - 6%);
+        overflow-y: scroll;
+}
+
+.clubSuggestionsBackBtnWrapper {
+        border-bottom: 1px solid rgba(118, 69, 59, 0.53);
+        max-height: 8%;
+        /*max-height: fit-content;*/
+        height: fit-content;
+        padding: 0.5rem 1rem;
+
+        display: flex;
+        justify-content: space-between;
+}
+
+.clubSuggestionsBackBtn {
+        padding: 0.2rem 1rem;
+        max-height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        font-family: "Nunito", "Poppins", serif;
+        font-weight: bold;
+        color: white;
+        background-color: #76453b;
+        border-radius: 0.5rem;
+
+        border: none;
+}
+
+.clubSuggestionsBackBtn:hover,
+.clubSuggestionsBackBtn:active {
+        background-color: #371f1a;
+}
+
+.clubSuggestionsContentBody {
+        height: calc(100% - 6%);
+        /*border: 2px solid green;*/
+        min-height: fit-content;
+        max-height: calc(100% - 6%);
+        overflow-y: scroll;
+}
+
+/*Club Suggestion Post*/
+.clubSuggestionPostRoot {
+        width: 100%;
+        height: fit-content;
+        padding: 1rem;
+        border: 1px solid rgba(118, 69, 59, 0.49);
+}
+
+.clubSuggestionPostWrapper {
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #76453b;
+        border-radius: 1rem;
+        background-color: #fffaf1;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.3));
+}
+
+.clubSuggestionPostTitleWrapper,
+.clubSuggestionPostSubjectWrapper,
+.clubSuggestionPostDescWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 0 0.5rem 0;
+        border-bottom: 1px solid rgba(55, 31, 26, 0.62);
+}
+
+.clubSuggestionPostTitleLabel,
+.clubSuggestionPostSubjectLabel,
+.clubSuggestionPostDescLabel {
+        border-bottom: 0.5px solid #76453b;
+        width: fit-content;
+        font-size: 1rem;
+        font-family: "Montserrat", serif;
+        font-weight: 700;
+        color: #76453b;
+}
+
+.clubSuggestionPostTitleHeading,
+.clubSuggestionPostSubjectHeading {
+        color: #371f1a;
+        font-family: "Nunito", serif;
+        max-width: 100%;
+        overflow-wrap: break-word;
+}
+
+.clubSuggestionPostDescription {
+        color: #371f1a;
+        font-family: "Nunito", serif;
+        font-size: 1.4rem;
+        max-width: 100%;
+        max-height: 23.8rem;
+        overflow-y: scroll;
+        padding: 0 1rem;
+}
+
+.clubSuggestionPostedAtP {
+        font-family: "poppins", serif;
+        color: #76453b;
+}
+
+.clubSuggestionPostedAtP span {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #76453b;
+}

@@ -1,0 +1,63 @@
+.spinnerContainer {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+}
+
+.spinnerOverlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.4);
+        top: 0;
+        left: 0;
+        /*z-index: -10;*/
+        /*visibility: hidden;*/
+        backdrop-filter: blur(10px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.spinnerOverlay svg {
+        width: 3.25em;
+        transform-origin: center;
+        animation: rotate4 2s linear infinite;
+}
+
+circle {
+        fill: none;
+        /*stroke: hsl(214, 97%, 59%);*/
+        stroke: #76453b;
+        stroke-width: 4;
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+        animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+        100% {
+                transform: rotate(360deg);
+        }
+}
+
+@keyframes dash4 {
+        0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+        }
+
+        50% {
+                stroke-dasharray: 90, 200;
+                stroke-dashoffset: -35px;
+        }
+
+        100% {
+                stroke-dashoffset: -125px;
+        }
+}

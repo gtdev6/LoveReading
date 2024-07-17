@@ -1,0 +1,179 @@
+.updateClubInfoRootContainer {
+    height: calc(100% - 6%);
+    width: 100%;
+    /*max-height: calc(100% - 6%);*/
+    /*border: 2px solid red;*/
+    min-height: fit-content;
+    padding: 1rem;
+}
+
+.updateClubInfoWrapper {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #76453b;
+    border-radius: 1rem;
+    background-color: #fffaf1;
+    /*overflow-y: scroll;*/
+    min-height: fit-content;
+    overflow-y: scroll;
+}
+
+.updateClubInfoWrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    min-height: fit-content;
+}
+
+.updateClubInfoFieldWrapper {
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.updateClubInfoFieldLabel {
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #76453b;
+}
+
+.updateClubInfoFieldWrapper input {
+    height: 3.2rem;
+    border: 1px solid #76453b;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    font-family: "Nunito", serif;
+}
+
+.updateClubInfoFieldWrapper textarea {
+    min-height: 15rem;
+    height: 15rem;
+    max-height: 20rem;
+    border: 1px solid #76453b;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-family: "Nunito", serif;
+}
+
+.updateClubInfoBtnsContainer {
+    display: flex;
+    gap: 0.5rem;
+    height: fit-content;
+    padding: 1rem;
+}
+
+.updateClubInfoBtnsContainer button {
+    flex-grow: 1;
+    height: 3.2rem;
+    border-radius: 0.8rem;
+    font-family: "Nunito", serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    filter: drop-shadow(0 1px 0.1rem rgba(0, 0, 0, 0.8));
+}
+
+.updateClubInfoCloseBtn {
+    border: 2px solid #76453b;
+    background-color: white;
+    color: #76453b;
+}
+
+.updateClubInfoSaveBtn {
+    background-color: #76453b;
+    color: #fffaf1;
+}
+
+.updateClubInfoBookFieldWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.updateClubInfoBookFieldWrapper input {
+    flex-grow: 3;
+}
+
+.updateClubInfoBookFieldWrapper button {
+    background-color: white;
+    border-radius: 0.5rem;
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #76453b;
+    filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.4));
+}
+
+.updateClubInfoBookFieldWrapper button:hover svg,
+.updateClubInfoBookFieldWrapper button:hover svg {
+    color: white;
+}
+
+.updateClubInfoBookFieldWrapper button:hover,
+.updateClubInfoBookFieldWrapper button:active {
+    background-color: #76453b;
+    color: white;
+}
+
+.updateClubInfoBookFieldWrapper button:active {
+    transform: translateX(1px) translateY(1px);
+}
+
+.updateClubInfoBookFieldWrapper button svg {
+    color: #76453b;
+}
+
+.bookListRoot {
+    border: 1px solid #76453b;
+    height: fit-content;
+    min-height: 10rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.bookListRoot li {
+    list-style-type: none;
+}
+
+.bookListItem p {
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    /*border: 1px solid black;*/
+    padding: 0.5rem 1rem;
+
+    font-size: 1.5rem;
+    font-family: "Nunito", serif;
+    font-weight: 700;
+    color: #76453b;
+}
+
+.bookListItem img {
+    max-height: 2rem;
+    aspect-ratio: 1/1;
+}
+
+.updateClubInfoFieldWrapper input[type="Date"],
+.updateClubInfoBookFieldWrapper input[type="time"] {
+    min-width: calc(100% - 1rem);
+}
+
+#updateClubInfoTimeTextField {
+    min-width: calc(100% - 1rem) !important;
+    width: 100%;
+}

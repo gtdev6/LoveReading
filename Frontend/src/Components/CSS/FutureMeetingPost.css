@@ -1,0 +1,368 @@
+.fMeetingContainer {
+        border: 1px solid rgba(118, 69, 59, 0.51);
+        width: 100%;
+        /*aspect-ratio: 1/1;*/
+        /*background-color: #fff;*/
+        background-color: #fffaf1;
+        height: fit-content;
+
+        padding: 1rem;
+}
+
+.fMeetingWrapper {
+        border: 2px solid #76453b;
+        height: 100%;
+        border-radius: 1.5rem;
+        padding: 1rem;
+
+        filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.5));
+        /*background-color: white;*/
+        background-color: #fffaf1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+}
+
+.fMeetingInfoWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 1rem;
+        padding: 0.5rem;
+        max-height: 23.8rem;
+        overflow-y: scroll;
+        background-color: white;
+}
+
+.fMeetingTitleWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 0 0.5rem 0;
+        border-bottom: 1px solid rgba(55, 31, 26, 0.62);
+}
+
+.fMeetingTitleWrapper {
+        max-height: 15%;
+}
+
+.fMeetingDateWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.fMeetingDate {
+        font-family: "poppins", serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #76453b;
+}
+
+.fMeetingTitleLabel {
+        border-bottom: 0.5px solid #76453b;
+        width: fit-content;
+        font-size: 1rem;
+        font-family: "Montserrat", serif;
+        font-weight: 700;
+        color: #371f1a;
+}
+
+.fMeetingTitleHeading {
+        color: #76453b;
+        font-family: "Nunito", serif;
+}
+
+.fMeetingInfoBookWrapper {
+        display: flex;
+        /*flex-direction: column;*/
+        align-items: center;
+        /*gap: */
+        padding: 0.5rem;
+        border: 1px solid #76453b;
+        border-radius: 1rem;
+}
+
+.fMeetingInfoBookContainer {
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        /*border: 1px solid blue;*/
+}
+
+.fMeetingBookRoot {
+        display: flex;
+        align-items: center;
+        /*border: 1px solid red;*/
+        flex-grow: 2;
+        overflow: hidden;
+}
+
+.fMeetingInfoBookWrapper img {
+        max-height: 1.5rem;
+        margin-right: 0.8rem;
+}
+
+.fMeetingInfoBookWrapper p {
+        font-family: "Nunito", serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: #76453b;
+        text-wrap: normal;
+}
+
+.fMeetingBookCheckWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*min-height: 2.5rem;*/
+        /*min-width: 2.5rem;*/
+        /*height: 2.5rem;*/
+        /*width: 2.5rem;*/
+        width: 15%;
+        min-height: 6rem !important;
+        /*border: 1px solid red;*/
+
+        & svg {
+                color: #76453b;
+                /*height: 2.5rem;*/
+                /*width: 2.5rem;*/
+                /*height: 100%;*/
+                width: 100%;
+                aspect-ratio: 1/1;
+                /*border: 1px solid deeppink;*/
+        }
+}
+
+.fMeetingBookCheckWrapper svg {
+        /*border: 1px solid deeppink;*/
+        aspect-ratio: 1/1 !important;
+        width: 100%;
+        height: auto;
+}
+
+.fMeetingCheckFilledIcon {
+        color: green !important;
+        background-color: green !important;
+}
+
+.fMeetingBookApproveInfoContainer {
+        display: flex;
+        flex-direction: column;
+        /*gap: 1rem;*/
+}
+
+.fMeetingApproveLabel {
+        font-size: 0.8rem !important;
+        font-family: "poppins", serif;
+        /*border: 1px solid purple;*/
+        color: #76453b;
+}
+
+.fMeetingApproveNum {
+        font-size: 1.4rem !important;
+        font-family: "poppins", serif;
+        /*border: 1px solid purple;*/
+}
+
+/*==================================*/
+/* ------------------TABS ROOT ----------------*/
+/*==================================*/
+
+.fMeetingTabsRoot {
+        /*border: 2px solid red;*/
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.fMeetingTabList {
+        /*border: 2px solid blue;*/
+        display: flex;
+        border-radius: 1rem;
+        overflow: hidden;
+        /*border: 1px solid #76453b;*/
+}
+
+.fMeetingsTab {
+        min-height: 3.4rem;
+        flex-grow: 1;
+        background-color: whitesmoke;
+        border-radius: 1rem;
+        color: #371f1a;
+
+        border: none;
+
+        font-family: "poppins", serif;
+
+        /*filter: drop-shadow(0 0 .2rem rgba(0, 0, 0, .3));*/
+}
+
+.fMeetingsTab[data-active] {
+        background-color: #76453b;
+        color: White;
+        border: none;
+}
+
+.fMeetingPanelSuggestPanel {
+        padding: 1rem;
+        border: 1px solid #76453b;
+        border-radius: 1rem;
+}
+
+.fMeetingPanelSuggestPanel form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.fMeetingBookNameTextField {
+        min-height: 3.2rem;
+        border-radius: 1rem;
+        border: 1px solid #76453b;
+        font-family: "poppins", serif;
+        font-weight: 400;
+        padding: 0 1rem;
+        color: #76453b;
+}
+
+.fMeetingBookFormBtn {
+        border: 3px solid #76453b;
+        min-height: 3.2rem;
+        background-color: white;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-weight: 900;
+        color: #76453b;
+        font-family: "Nunito", serif;
+}
+
+.fMeetingBookFormBtn:hover,
+.fMeetingBookFormBtn:active {
+        background-color: #76453b;
+        color: white;
+}
+
+.fMeetingBookFormBtn:active {
+        transform: translateX(1px);
+}
+
+.fMeetingSuggestionsPanel {
+        border: 1px solid rgba(118, 69, 59, 0.33);
+        padding: 1rem;
+        border-radius: 1rem;
+        max-height: 23.8rem;
+        overflow: scroll;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.noBooksSuggestedYet {
+        font-family: "Nunito", serif;
+        font-size: 1.6rem;
+        color: #76453b;
+        font-weight: 600;
+}
+
+/*For mobiles whose screens are larger*/
+@media screen and (min-width: 600px) and (max-width: 1080px) and (orientation: portrait) {
+        .fMeetingTitleHeading {
+                font-size: 3rem;
+        }
+
+        .fMeetingDate {
+                font-size: 2.4rem;
+        }
+
+        .fMeetingInfoWrapper {
+                max-height: 55rem;
+                overflow-y: scroll;
+                background-color: white;
+                border-radius: 2rem;
+                gap: 1rem;
+                padding: 1.5rem;
+        }
+
+        .fMeetingInfoBookWrapper {
+                border-radius: 2rem;
+
+                /*border: 2px solid red;*/
+        }
+
+        .fMeetingInfoBookContainer {
+                /*border: 1px solid blue;*/
+                min-height: 100%;
+                height: auto;
+        }
+
+        .fMeetingBookRoot {
+        }
+
+        .fMeetingBookRoot img {
+                min-height: 3rem;
+        }
+
+        .fMeetingBookRoot p {
+                font-size: 3rem;
+                /*border: 1px solid red;*/
+                width: 100%;
+                max-width: 100%;
+                overflow-wrap: break-word;
+        }
+
+        .fMeetingBookApproveInfoContainer {
+                /*border: 1px solid red;*/
+                min-height: 2rem;
+        }
+
+        .fMeetingApproveLabel {
+                font-size: 1.6rem !important;
+        }
+
+        .fMeetingApproveNum {
+                font-size: 2rem !important;
+        }
+
+        .fMeetingPanelSuggestPanel form {
+                gap: 1.5rem;
+        }
+
+        .fMeetingsTab {
+                height: 6rem;
+                font-size: 2.4rem;
+        }
+
+        .fMeetingBookNameTextField,
+        .fMeetingBookFormBtn {
+                height: 7rem;
+                font-size: 2.4rem;
+                border-radius: 2rem;
+        }
+
+        .fMeetingSuggestionsPanel {
+                background-color: #fff;
+        }
+}
+
+/* Horizontal Tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        /* Styles for horizontal tablets */
+}
+
+/* Laptops with Smaller Screens */
+@media screen and (min-width: 1025px) and (max-width: 1365px) and (orientation: landscape) {
+        /* Styles for laptops with smaller screens */
+}
+
+/* Laptops with Screen Widths Between 1366px and 1920px */
+@media screen and (min-width: 1366px) and (max-width: 1919px) and (orientation: landscape) {
+        /* Styles for laptops with screen widths between 1366px and 1920px */
+}
+
+/* Full HD Screens */
+@media screen and (min-width: 1920px) and (orientation: landscape) {
+        /* Styles for full HD screens */
+}

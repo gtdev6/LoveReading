@@ -1,0 +1,79 @@
+.aboutClubRoot{
+    height: calc(100% - 6%);
+    width: 100%;
+    border: 2px solid black;
+    padding: 1rem;
+
+}
+
+.aboutClubWrapper{
+    background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgba(118, 69, 59, 0.5);
+    border-radius: 1.3rem;
+    filter: drop-shadow(0 0 .3rem rgba(0, 0, 0, .3));
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 1rem;
+
+}
+
+.aboutClubLogoContainer{
+    width: 100%;
+    padding: 1rem;
+    height: fit-content;
+    max-height: 8rem;
+    background-color: white;
+    border-radius: 1rem;
+    filter: drop-shadow(0 0 .3rem rgba(0, 0, 0, .9));
+}
+
+.aboutClubAboutUsWrapper, .aboutClubActivitiesWrapper, .aboutClubHowToJoinWrapper,
+.aboutClubFeaturedBooksWrapper, .aboutClubContactInfoWrapper{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid rgba(67, 118, 99, 0.36);
+    width: 100%;
+    color: #437663;
+}
+
+.aboutClubLabel{
+    font-family: "Nunito", serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #371f1a;
+    text-decoration: underline;
+}
+
+.aboutClubAboutUs, .aboutClubActivitiesUs, .aboutClubHowToJoinUs{
+    font-family: "Nunito", serif;
+    font-size: 1.5rem;
+    color: #437663;
+}
+
+.aboutClubContactInfoUs, .aboutClubFeatureBookUs{
+    display: flex;
+    gap: .5rem;
+    /*justify-content: center;*/
+    align-items: center;
+    font-family: "Nunito", serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #437663;
+}
+
+.aboutClubFeatureBookUs img{
+    max-height: 2rem;
+}

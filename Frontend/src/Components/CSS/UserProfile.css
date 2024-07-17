@@ -1,0 +1,202 @@
+.userProfileRootContainer {
+        /*border: 1px solid red;*/
+        height: calc(100% - 6%);
+        overflow-y: scroll;
+}
+
+.userProfileBackBtnWrapper {
+        border-bottom: 1px solid rgba(118, 69, 59, 0.53);
+        max-height: 8%;
+        /*max-height: fit-content;*/
+        height: fit-content;
+        padding: 0.5rem 1rem;
+
+        display: flex;
+        justify-content: space-between;
+}
+
+.userProfileBackBtn {
+        padding: 0.2rem 1rem;
+        max-height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        font-family: "Nunito", "Poppins", serif;
+        font-weight: bold;
+        color: white;
+        background-color: #76453b;
+        border-radius: 0.5rem;
+
+        border: none;
+}
+
+.userProfileBackBtn:hover,
+.userProfileBackBtn:active {
+        background-color: #371f1a;
+}
+
+.userProfileContentBody {
+        height: calc(100% - 6%);
+        /*border: 2px solid green;*/
+        min-height: fit-content;
+}
+
+.userProfileUserInfoContainer {
+        border: 1px solid rgba(118, 69, 59, 0.3);
+        aspect-ratio: 1/1;
+        width: 100%;
+        padding: 1rem;
+        /*background-color: white;*/
+}
+
+.userProfileInfoRoot {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 0;
+        border: 2px solid rgba(118, 69, 59, 0.46);
+        aspect-ratio: 1/1;
+        width: 100%;
+        background-color: #fffaf1;
+        border-radius: 1rem;
+        position: relative;
+
+        filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.3));
+}
+
+.userProfileImageContainer {
+        width: 100%;
+        height: 50%;
+        /*border: 2px solid orange;*/
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.userProfileImageContainer img {
+        object-fit: cover;
+        object-position: top;
+        aspect-ratio: 1/1;
+        max-height: 95%;
+        height: 90%;
+        width: auto;
+        /*border: 1px solid #371f1a;*/
+        border-radius: 50%;
+        background-color: white;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+.userProfileImageContainer img svg {
+        fill: #371f1a;
+}
+
+.userProfileInfoEdit {
+        position: absolute;
+        right: 5%;
+        top: 5%;
+        padding: 0.5rem;
+        border-radius: 1.2rem;
+        cursor: pointer;
+
+        color: #76453b;
+        background-color: white;
+        border: none;
+        filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.5));
+}
+
+.userProfileUserInfoWrapper {
+        padding: 0 1rem;
+        font-family: "Nunito", "Poppins", serif;
+}
+
+.userProfileUserName {
+        font-size: 2.8rem;
+        color: #76453b;
+}
+
+.userProfileDateOfBirthWrapper {
+        display: flex;
+        flex-direction: column;
+}
+
+.userProfileDateOfBirthLabel,
+.userProfileDateClubLabel,
+.userProfileBioLabel {
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        color: #76453b;
+        text-decoration: underline;
+}
+
+.userProfileDateOfBirth,
+.userProfileDateOfClubJoining {
+        font-family: "Nunito", serif;
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #76453b;
+}
+
+.userProfileBio {
+        font-size: 1.4rem;
+        color: #76453b;
+        font-family: "Nunito", serif;
+        font-weight: 500;
+
+        /*border: 1px solid red;*/
+        min-height: 6rem;
+        padding: 0.5rem;
+        border: 1px solid rgba(118, 69, 59, 0.47);
+        border-radius: 1rem;
+}
+
+.userProfileShortStoriesContainer {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+}
+
+.noProfileMessageContainer {
+        /*border: 4px solid red;*/
+        height: calc(100% - 6%);
+        width: 100%;
+}
+
+.noProfileMessageWrapper {
+        width: 100%;
+        /*border: 2px solid  blue;*/
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+}
+
+.noProfileMessageWrapper p,
+.noShortStoriesYetWrapper p {
+        font-family: "Nunito", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #76453b;
+}
+
+.noShortStoriesYetContainer {
+        aspect-ratio: 1/1;
+        width: 100%;
+        padding: 1rem;
+}
+
+.noShortStoriesYetWrapper {
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fffaf1;
+        filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.3));
+        border-radius: 1rem;
+        border: 1px solid rgba(118, 69, 59, 0.47);
+}

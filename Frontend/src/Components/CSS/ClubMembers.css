@@ -1,0 +1,175 @@
+.clubMembersRootContainer {
+        /*border: 1px solid red;*/
+        height: calc(100% - 6%);
+        overflow-y: scroll;
+}
+
+.clubMembersBackBtnWrapper {
+        border-bottom: 1px solid rgba(118, 69, 59, 0.53);
+        max-height: 8%;
+        /*max-height: fit-content;*/
+        height: fit-content;
+        padding: 0.5rem 1rem;
+
+        display: flex;
+        justify-content: space-between;
+}
+
+.clubMembersBackBtn {
+        padding: 0.2rem 1rem;
+        max-height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        font-family: "Nunito", "Poppins", serif;
+        font-weight: bold;
+        color: white;
+        background-color: #76453b;
+        border-radius: 0.5rem;
+
+        border: none;
+}
+
+.clubMembersBackBtn:hover,
+.clubMembersBackBtn:active {
+        background-color: #371f1a;
+}
+
+.totalMembersCount {
+        border: 1px solid #76453b;
+        display: flex;
+        align-items: center;
+
+        font-family: "Nunito", serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: white;
+        padding: 0 1rem;
+        border-radius: 1rem;
+        background-color: #437663;
+}
+
+.clubMembersContentBody {
+        height: calc(100% - 6%);
+        /*border: 2px solid green;*/
+        min-height: fit-content;
+        max-height: calc(100% - 6%);
+        /*overflow-y: scroll;*/
+        padding: 1rem;
+}
+
+.clubMembersContentBodyWrapper {
+        border: 1px solid #76453b;
+        height: 100%;
+        border-radius: 1rem;
+        background-color: #fffaf1;
+        filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.3));
+
+        overflow-y: scroll;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.clubMemberListItem {
+        border: 1px solid rgba(118, 69, 59, 0.3);
+        height: fit-content;
+        min-width: 100%;
+        padding: 0.5rem;
+        min-height: 7.4rem;
+        border-radius: 1.2rem;
+        background-color: white;
+        /*background-color: #437663;*/
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5rem;
+}
+
+.cMListItemProfileImageContainer {
+        /*min-height: 100%;*/
+        aspect-ratio: 1/1;
+        height: auto;
+        width: 15%;
+        max-width: 15%;
+        min-width: 5rem;
+        border: 1px solid black;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        overflow: hidden;
+}
+
+.cMListItemProfileImageContainer img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+}
+
+.cMListItemDescContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+        min-width: 65%;
+
+        border: 1px solid rgba(118, 69, 59, 0.4);
+        border-radius: 0.5rem;
+}
+
+.cMListItemDescName {
+        flex-grow: 2;
+        font-family: "Nunito", serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: #76453b;
+}
+
+.cMListItemDescShortStories,
+.cMListItemDescJoinedOn {
+        font-family: "Nunito", serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: #76453b;
+}
+
+.cMListItemViewBtnWrapper {
+        min-height: 6rem;
+        height: 100%;
+        max-width: 20%;
+        /*border: 1px solid #76453b;*/
+
+        display: flex;
+        justify-content: center;
+}
+
+.cMListItemViewBtnWrapper button {
+        min-height: 100%;
+        font-size: 1.4rem;
+        font-family: "Nunito", serif;
+        font-weight: 800;
+        color: #76453b;
+        border-radius: 1rem;
+        border: 1px solid #76453b;
+        background-color: white;
+
+        filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.3));
+}
+
+.cMListItemViewBtnWrapper button:hover,
+.cMListItemViewBtnWrapper button:active {
+        background-color: #76453b;
+        color: #fffaf1;
+}
+
+.cMListItemViewBtnWrapper button:active {
+        transform: translateX(1px) translateY(1px);
+}

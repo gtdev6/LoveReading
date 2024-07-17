@@ -1,0 +1,179 @@
+.newFutureMeetingRootContainer {
+        height: calc(100% - 6%);
+        width: 100%;
+        /*max-height: calc(100% - 6%);*/
+        /*border: 2px solid red;*/
+        min-height: fit-content;
+        padding: 1rem;
+}
+
+.newFutureMeetingWrapper {
+        height: 100%;
+        width: 100%;
+        border: 1px solid #76453b;
+        border-radius: 1rem;
+        background-color: #fffaf1;
+        /*overflow-y: scroll;*/
+        min-height: fit-content;
+        overflow-y: scroll;
+}
+
+.newFutureMeetingWrapper form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        min-height: fit-content;
+}
+
+.newFutureMeetingFieldWrapper {
+        /*border: 1px solid red;*/
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.newFutureMeetingFieldLabel {
+        font-family: "Poppins", serif;
+        font-weight: 700;
+        text-decoration: underline;
+        color: #76453b;
+}
+
+.newFutureMeetingFieldWrapper input {
+        height: 3.2rem;
+        border: 1px solid #76453b;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+        font-family: "Nunito", serif;
+}
+
+.newFutureMeetingFieldWrapper textarea {
+        min-height: 30rem;
+        height: 30rem;
+        max-height: 30rem;
+        border: 1px solid #76453b;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-family: "Nunito", serif;
+}
+
+.newFutureMeetingBtnsContainer {
+        display: flex;
+        gap: 0.5rem;
+        height: fit-content;
+        padding: 1rem;
+}
+
+.newFutureMeetingBtnsContainer button {
+        flex-grow: 1;
+        height: 3.2rem;
+        border-radius: 0.8rem;
+        font-family: "Nunito", serif;
+        font-weight: 800;
+        font-size: 1.6rem;
+        filter: drop-shadow(0 1px 0.1rem rgba(0, 0, 0, 0.8));
+}
+
+.newFutureMeetingCloseBtn {
+        border: 2px solid #76453b;
+        background-color: white;
+        color: #76453b;
+}
+
+.newFutureMeetingSaveBtn {
+        background-color: #76453b;
+        color: #fffaf1;
+}
+
+.newFutureMeetingBookFieldWrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+}
+
+.newFutureMeetingBookFieldWrapper input {
+        flex-grow: 3;
+}
+
+.newFutureMeetingBookFieldWrapper button {
+        background-color: white;
+        border-radius: 0.5rem;
+        height: 100%;
+        aspect-ratio: 1/1;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #76453b;
+        filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.4));
+}
+
+.newFutureMeetingBookFieldWrapper button:hover svg,
+.newFutureMeetingBookFieldWrapper button:hover svg {
+        color: white;
+}
+
+.newFutureMeetingBookFieldWrapper button:hover,
+.newFutureMeetingBookFieldWrapper button:active {
+        background-color: #76453b;
+        color: white;
+}
+
+.newFutureMeetingBookFieldWrapper button:active {
+        transform: translateX(1px) translateY(1px);
+}
+
+.newFutureMeetingBookFieldWrapper button svg {
+        color: #76453b;
+}
+
+.newFutureMeetingBookListRoot {
+        border: 1px solid #76453b;
+        height: fit-content;
+        min-height: 10rem;
+        width: 100%;
+        background-color: white;
+        border-radius: 1rem;
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.newFutureMeetingBookListRoot li {
+        list-style-type: none;
+}
+
+.newFutureMeetingBookListRoot p {
+        width: 100%;
+        min-width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        /*border: 1px solid black;*/
+        padding: 0.5rem 1rem;
+
+        font-size: 1.5rem;
+        font-family: "Nunito", serif;
+        font-weight: 700;
+        color: #76453b;
+}
+
+.newFutureMeetingBookListItem img {
+        max-height: 2rem;
+        aspect-ratio: 1/1;
+}
+
+.newFutureMeetingFieldWrapper input[type="Date"],
+.newFutureMeetingBookFieldWrapper input[type="time"] {
+        min-width: calc(100% - 1rem);
+}
+
+#newFutureMeetingTimeTextField {
+        min-width: calc(100% - 1rem) !important;
+        width: 100%;
+}

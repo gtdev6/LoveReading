@@ -1,0 +1,142 @@
+.shortStoryRootContainer {
+        border: 1px solid rgba(118, 69, 59, 0.46);
+        width: 100%;
+        height: fit-content;
+        padding: 1rem;
+}
+
+.shortStoryRootWrapper {
+        border: 2px solid rgba(118, 69, 59, 0.46);
+        height: 100%;
+        border-radius: 1.5rem;
+        background-color: #fffaf1;
+        padding: 1rem;
+
+        filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.3));
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.shortStoryTitleWrapper,
+.shortStoryPostedAtWrapper,
+.shortStoryAuthorWrapper,
+.shortStoryWrapper {
+        /*border: 1px solid blue;*/
+}
+
+.shortStoryTitleLabel,
+.shortStoryAuthorLabel,
+.shortStoryContentLabel {
+        font-family: "poppins", serif;
+        font-weight: 600;
+        color: #76453b;
+}
+
+.shortStoryTitleH {
+        max-width: 100%;
+        overflow-wrap: break-word;
+        font-family: "Nunito", serif;
+        font-weight: 800;
+        color: #76453b;
+}
+
+.shortStoryPostedAtP {
+        font-family: "poppins", serif;
+        color: #76453b;
+}
+
+.shortStoryPostedAtP span {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #76453b;
+}
+
+.shortStoryAuthorP {
+        font-family: "Nunito", serif;
+        color: #76453b;
+        font-weight: 700;
+        font-size: 1.4rem;
+}
+
+.shortStoryWrapper {
+        border: 1px solid rgba(118, 69, 59, 0.32);
+        border-radius: 1rem;
+}
+
+.shortStoryContentLabel {
+        padding: 0 0.5rem;
+}
+
+.shortStoryP {
+        max-width: 100%;
+        max-height: 23.8rem;
+        height: auto;
+        padding: 0.5rem;
+        overflow-wrap: break-word;
+        overflow-y: scroll;
+
+        font-family: "Nunito", serif;
+        font-size: 1.5rem;
+}
+
+/*For mobiles whose screens are larger*/
+@media screen and (min-width: 600px) and (max-width: 1080px) and (orientation: portrait) {
+        .shortStoryTitleLabel,
+        .shortStoryAuthorLabel,
+        .shortStoryContentLabel {
+                font-size: 1.5rem;
+                text-decoration: underline;
+        }
+
+        .shortStoryTitleH {
+                font-size: 3rem;
+        }
+
+        .shortStoryPostedAtP {
+                font-size: 1.8rem;
+        }
+
+        .shortStoryPostedAtP span {
+                font-size: 2rem;
+        }
+
+        .shortStoryAuthorP {
+                font-size: 2.4rem;
+        }
+
+        .shortStoryWrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+                white-space: pre-wrap;
+        }
+
+        .shortStoryP {
+                white-space: pre-wrap;
+                max-width: 100%;
+                max-height: 55rem;
+                font-size: 2.4rem;
+        }
+}
+
+/* Horizontal Tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        /* Styles for horizontal tablets */
+}
+
+/* Laptops with Smaller Screens */
+@media screen and (min-width: 1025px) and (max-width: 1365px) and (orientation: landscape) {
+        /* Styles for laptops with smaller screens */
+}
+
+/* Laptops with Screen Widths Between 1366px and 1920px */
+@media screen and (min-width: 1366px) and (max-width: 1919px) and (orientation: landscape) {
+        /* Styles for laptops with screen widths between 1366px and 1920px */
+}
+
+/* Full HD Screens */
+@media screen and (min-width: 1920px) and (orientation: landscape) {
+        /* Styles for full HD screens */
+}
