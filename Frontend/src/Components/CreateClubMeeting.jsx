@@ -19,14 +19,21 @@ export function CreateClubMeeting() {
         const [meetingLocation, setMeetingLocation] = useState("");
 
         const createClubMeeting = async (data) => {
-                const { responseData } = await API.post(
-                        `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/meetings/`,
-                        data,
-                        {
+                try {
+                        const apiUrl =
+                                process.env.NODE_ENV === "production"
+                                        ? `${import.meta.env.VITE_API_URL}/api/v1/meetings/`
+                                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/meetings/`;
+
+                        const response = await API.post(apiUrl, data, {
                                 withCredentials: true,
-                        },
-                );
-                return responseData;
+                        });
+
+                        return response.data; // Assuming API response structure where data is within response.data
+                } catch (error) {
+                        console.error("Error creating club meeting:", error);
+                        throw error; // Re-throw the error to handle it further up the call stack if needed
+                }
         };
 
         const { mutateAsync } = useMutation({

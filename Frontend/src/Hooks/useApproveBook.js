@@ -9,8 +9,12 @@ const useApproveBook = () => {
 
         return useMutation({
                 mutationFn: async ({ meetingId, bookId, isSuggestedBook }) => {
+                        const apiUrl =
+                                process.env.NODE_ENV === "production"
+                                        ? `${import.meta.env.VITE_API_URL}/api/v1/futureMeetings/approveFutureMeetingBook`
+                                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/futureMeetings/approveFutureMeetingBook`;
                         const response = await API.patch(
-                                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/futureMeetings/approveFutureMeetingBook`,
+                                apiUrl,
                                 {
                                         meetingId,
                                         bookId,

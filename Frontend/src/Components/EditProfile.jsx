@@ -57,30 +57,32 @@ export function EditProfile() {
 
         // Mutation function to create profile
         const createProfile = async (formData) => {
-                const { data } = await API.post(
-                        `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/profile/createProfile`,
-                        formData,
-                        {
-                                headers: {
-                                        "Content-Type": "multipart/form-data",
-                                },
-                                withCredentials: true,
+                const apiUrl =
+                        process.env.NODE_ENV === "production"
+                                ? `${import.meta.env.VITE_API_URL}/api/v1/profile/createProfile`
+                                : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/profile/createProfile`;
+
+                const { data } = await API.post(apiUrl, formData, {
+                        headers: {
+                                "Content-Type": "multipart/form-data",
                         },
-                );
+                        withCredentials: true,
+                });
                 return data;
         };
 
         const editProfile = async (formData) => {
-                const { data } = await API.patch(
-                        `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/profile/updateProfile`,
-                        formData,
-                        {
-                                headers: {
-                                        "Content-Type": "multipart/form-data",
-                                },
-                                withCredentials: true,
+                const apiUrl =
+                        process.env.NODE_ENV === "production"
+                                ? `${import.meta.env.VITE_API_URL}/api/v1/profile/updateProfile`
+                                : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/profile/updateProfile`;
+
+                const { data } = await API.patch(apiUrl, formData, {
+                        headers: {
+                                "Content-Type": "multipart/form-data",
                         },
-                );
+                        withCredentials: true,
+                });
                 return data;
         };
 

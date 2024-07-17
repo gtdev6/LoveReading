@@ -16,14 +16,16 @@ export function CreateShortStory() {
 
         // Define the mutation function
         const createShortStoryMutation = useMutation({
-                mutationFn: async (newShortStory) =>
-                        await API.post(
-                                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/shortStories/create`,
-                                newShortStory,
-                                {
-                                        withCredentials: true,
-                                },
-                        ),
+                mutationFn: async (newShortStory) => {
+                        const apiUrl =
+                                process.env.NODE_ENV === "production"
+                                        ? `${import.meta.env.VITE_API_URL}/api/v1/shortStories/create`
+                                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/shortStories/create`;
+
+                        return await API.post(apiUrl, newShortStory, {
+                                withCredentials: true,
+                        });
+                },
                 onSuccess: async () => {
                         await queryClient.invalidateQueries({
                                 queryKey: ["shortStories", "profile"],

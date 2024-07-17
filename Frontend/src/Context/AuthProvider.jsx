@@ -6,8 +6,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { setupAxiosInterceptors } from "./axiosSetup.js";
 
+const baseAPIURL =
+        process.env.NODE_ENV === "production"
+                ? `${import.meta.env.VITE_API_URL}`
+                : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}`;
+
 export const API = axios.create({
-        baseURL: `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}`, // Adjust the base URL accordingly
+        baseURL: baseAPIURL, // Adjust the base URL accordingly
         withCredentials: true, // Allow sending cookies with requests if needed
 });
 

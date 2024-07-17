@@ -6,12 +6,13 @@ const fetchUser = async () => {
         let accessToken = localStorage.getItem("accessToken");
         const refreshToken = () => {
                 // Logic to refresh token
+                const apiUrl =
+                        process.env.NODE_ENV === "production"
+                                ? `${import.meta.env.VITE_API_URL}/api/v1/users/refresh`
+                                : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/refresh`;
+
                 return axios
-                        .post(
-                                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/refresh`,
-                                {},
-                                { withCredentials: true },
-                        )
+                        .post(apiUrl, {}, { withCredentials: true })
                         .then((response) => {
                                 localStorage.setItem(
                                         "accessToken",
@@ -23,26 +24,30 @@ const fetchUser = async () => {
 
         const getUserData = async () => {
                 try {
-                        const { data } = await axios.get(
-                                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`,
-                                {
-                                        headers: {
-                                                Authorization: `Bearer ${accessToken}`,
-                                        },
+                        const apiUrl =
+                                process.env.NODE_ENV === "production"
+                                        ? `${import.meta.env.VITE_API_URL}/api/v1/users/me`
+                                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`;
+
+                        const { data } = await axios.get(apiUrl, {
+                                headers: {
+                                        Authorization: `Bearer ${accessToken}`,
                                 },
-                        );
+                        });
                         return data;
                 } catch (error) {
                         if (error.response && error.response.status === 401) {
+                                const apiUrl =
+                                        process.env.NODE_ENV === "production"
+                                                ? `${import.meta.env.VITE_API_URL}/api/v1/users/me`
+                                                : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`;
+
                                 accessToken = await refreshToken();
-                                const { data } = await axios.get(
-                                        `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`,
-                                        {
-                                                headers: {
-                                                        Authorization: `Bearer ${accessToken}`,
-                                                },
+                                const { data } = await axios.get(apiUrl, {
+                                        headers: {
+                                                Authorization: `Bearer ${accessToken}`,
                                         },
-                                );
+                                });
                                 return data;
                         } else {
                                 throw error;

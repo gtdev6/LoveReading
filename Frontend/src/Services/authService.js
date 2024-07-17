@@ -1,9 +1,11 @@
 // src/services/authService.js
 import axios from "axios";
 
-const API_URL = `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users`; // Adjust the API URL as needed
-
 export const login = async (credentials) => {
+        const API_URL =
+                process.env.NODE_ENV === "production"
+                        ? `${import.meta.env.VITE_API_URL}/api/v1/users`
+                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users`;
         // const response = await axios.get(`${API_URL}/login`, credentials);
         const res = await fetch(`${API_URL}/login`, {
                 method: "POST",

@@ -3,12 +3,14 @@ import axios from "axios";
 import API from "../Context/axiosSetup.js";
 
 const fetchUsersWithProfiles = async () => {
-        const response = await API.get(
-                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/users-with-profiles`,
-                {
-                        withCredentials: true,
-                },
-        );
+        const apiUrl =
+                process.env.NODE_ENV === "production"
+                        ? `${import.meta.env.VITE_API_URL}/api/v1/users/me`
+                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/users-with-profiles`;
+
+        const response = await API.get(apiUrl, {
+                withCredentials: true,
+        });
 
         return response.data;
 };

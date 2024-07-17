@@ -7,8 +7,13 @@ import { toast } from "react-toastify";
 const addSuggestion = async ({ bookName, meetingId }) => {
         console.log(bookName, meetingId);
 
+        const apiUrl =
+                process.env.NODE_ENV === "production"
+                        ? `${import.meta.env.VITE_API_URL}/api/v1/futureMeetings/addSuggestion`
+                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/futureMeetings/addSuggestion`;
+
         const response = await API.patch(
-                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/futureMeetings/addSuggestion`,
+                apiUrl,
                 { bookName, meetingId },
                 { withCredentials: true },
         );

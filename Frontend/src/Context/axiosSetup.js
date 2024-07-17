@@ -3,8 +3,13 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext.js";
 
+const baseAPIURL1 =
+        process.env.NODE_ENV === "production"
+                ? `${import.meta.env.VITE_API_URL}`
+                : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}`;
+
 export const API = axios.create({
-        baseURL: `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}`, // Adjust the base URL accordingly
+        baseURL: baseAPIURL1, // Adjust the base URL accordingly
         withCredentials: true, // Allow sending cookies with requests if needed
 });
 
@@ -13,14 +18,16 @@ async function checkUserRole(auth, setAuth) {
         if (auth && !auth.role) {
                 console.log("No Role line 25");
                 try {
-                        const response = await axios.get(
-                                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`,
-                                {
-                                        headers: {
-                                                Authorization: `Bearer ${auth.accessToken}`,
-                                        },
+                        const apiUrl =
+                                process.env.NODE_ENV === "production"
+                                        ? `${import.meta.env.VITE_API_URL}/api/v1/users/me`
+                                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`;
+
+                        const response = await axios.get(apiUrl, {
+                                headers: {
+                                        Authorization: `Bearer ${auth.accessToken}`,
                                 },
-                        );
+                        });
                         console.log("Console.log response line 37", response);
                         const userData = response.data;
                         setAuth((prev) => ({
@@ -61,9 +68,15 @@ export const setupAxiosInterceptors = ({ auth, setAuth, navigate }) => {
                                 } else {
                                         // Token expired, refresh token logic here
                                         try {
+                                                const apiUrl =
+                                                        process.env.NODE_ENV ===
+                                                        "production"
+                                                                ? `${import.meta.env.VITE_API_URL}/api/v1/users/refresh`
+                                                                : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/refresh`;
+
                                                 const response =
                                                         await axios.get(
-                                                                `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/refresh`,
+                                                                apiUrl,
                                                                 {
                                                                         withCredentials: true,
                                                                 },
@@ -120,9 +133,15 @@ export const setupAxiosInterceptors = ({ auth, setAuth, navigate }) => {
                                                 //         "Response Line 118",
                                                 // );
                                                 try {
+                                                        const apiUrl =
+                                                                process.env
+                                                                        .NODE_ENV ===
+                                                                "production"
+                                                                        ? `${import.meta.env.VITE_API_URL}/api/v1/users/me`
+                                                                        : `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`;
                                                         const response =
                                                                 await axios.get(
-                                                                        `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}/api/v1/users/me`,
+                                                                        apiUrl,
                                                                         {
                                                                                 headers: {
                                                                                         Authorization: `Bearer ${storedAccessToken}`,
