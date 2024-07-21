@@ -33,7 +33,7 @@ const allowedOrigins = [
         "https://love-reading.vercel.app",
         "https://love-reading-club.vercel.app",
         "https://love-reading-club.vercel.app/",
-        "https://love-reading.vercel.app/*",
+        "https://love-reading.vercel.app",
         "https://love-reading-git-main-ghulam-tahirs-projects.vercel.app",
         "https://love-reading-z8qaezcaz-ghulam-tahirs-projects.vercel.app",
         "https://love-reading-git-main-ghulam-tahirs-projects.vercel.app/",
@@ -56,6 +56,7 @@ app.use(
                 origin: allowedOrigins,
                 methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
                 allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+
                 optionsSuccessStatus: 200,
         }),
 );
