@@ -35,7 +35,6 @@ const allowedOrigins = [
         "https://love-reading-git-main-ghulam-tahirs-projects.vercel.app",
         "https://love-reading-z8qaezcaz-ghulam-tahirs-projects.vercel.app",
         "https://love-reading-git-main-ghulam-tahirs-projects.vercel.app/",
-        "*",
 ];
 
 const corsOptions = {
@@ -50,7 +49,14 @@ const corsOptions = {
 };
 
 // Use CORS middleware with the configured options
-app.use(cors(corsOptions));
+app.use(
+        cors({
+                origin: allowedOrigins,
+                methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
+                allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+                optionsSuccessStatus: 200,
+        }),
+);
 // app.use(cors());
 
 app.use(cookieParser());
