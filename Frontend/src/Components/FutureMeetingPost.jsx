@@ -6,6 +6,7 @@ import { useAuth } from "../Context/AuthContext.js";
 import { format } from "date-fns";
 import useApproveBook from "../Hooks/useApproveBook.js";
 import useAddSuggestionBook from "../Hooks/useAddSuggestionBook.js";
+import { Spinner } from "../Util Components/Spinner.jsx";
 
 function FutureSuggestionBook({
         meetingId,
@@ -26,10 +27,13 @@ function FutureSuggestionBook({
 
         const handleCheckboxChange = () => {
                 const bookId = bookData._id;
-                console.log(isSuggestedBook);
                 setIsChecked(!isChecked);
                 mutation.mutate({ meetingId, bookId, isSuggestedBook });
         };
+
+        if (mutation.status === "pending") {
+                return <Spinner />;
+        }
 
         if (bookData)
                 return (

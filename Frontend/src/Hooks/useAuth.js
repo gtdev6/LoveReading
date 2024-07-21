@@ -16,5 +16,12 @@ export const useLogin = () => {
 };
 
 export const useSignup = () => {
-        return useMutation({ mutationFn: signup });
+        return useMutation({
+                mutationKey: ["user"],
+                mutationFn: signup,
+                onSuccess: (data) => {},
+                onError: (e) => {
+                        console.log(e);
+                },
+        });
 };

@@ -5,11 +5,12 @@ import { ShortStoryPost } from "./ShortStoryPost.jsx";
 import { useHasProfile } from "../Hooks/useHasProfile.js";
 import { useGetProfile } from "../Hooks/useGetProfile.js";
 import { formatDate } from "date-fns/format";
+import { Spinner } from "../Util Components/Spinner.jsx";
 
 export function UserProfile() {
         const navigate = useNavigate();
         const { data: hasUserProfile } = useHasProfile();
-        const { data: profileData } = useGetProfile(
+        const { data: profileData, status } = useGetProfile(
                 hasUserProfile?.data?.profileId,
         );
 
@@ -36,6 +37,10 @@ export function UserProfile() {
                                 </div>
                         </div>
                 );
+        }
+
+        if (status === "pending") {
+                return <Spinner />;
         }
 
         if (
@@ -78,10 +83,13 @@ export function UserProfile() {
                                                                 <IconPencil />
                                                         </button>
                                                         <div className="userProfileImageContainer">
-                                                                {profile.profilePictureUrl ? (
+                                                                {profile.profilePictureURL ? (
                                                                         <img
                                                                                 src={
-                                                                                        profile.profilePictureUrl
+                                                                                        profile.profilePictureURL
+                                                                                }
+                                                                                loading={
+                                                                                        "lazy"
                                                                                 }
                                                                                 alt=""
                                                                         />
@@ -232,9 +240,6 @@ export function UserProfile() {
                                         </div>
                                 </div>
                                 <div className="userProfileShortStoriesContainer">
-                                        <ShortStoryPost />
-                                        <ShortStoryPost />
-                                        <ShortStoryPost />
                                         <ShortStoryPost />
                                 </div>
                         </div>

@@ -8,19 +8,45 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const bcrypt = require("bcryptjs");
 const multer = require("multer");
+
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const path = require("path");
+// const { cloudinary } = require("../app");
+const { v2: cloudinary } = require("cloudinary");
+
+cloudinary.config({
+        cloud_name: "duofodfpc",
+        api_key: "767839248863652",
+        api_secret: process.env.CLOUDINARY_SECRET,
+        secure: true,
+});
+
+exports.cloudinary = cloudinary;
 
 // Set storage engine
-const storage = multer.diskStorage({
-        destination: function (req, file, cb) {
-                cb(null, "public/uploads"); // Directory to save uploaded files
-        },
-        filename: function (req, file, cb) {
-                const ext = file.mimetype.split("/")[1];
-                cb(
-                        null,
-                        `user-${req.user.id}-${Date.now()}-${file.originalname}`,
-                );
+// const storage = multer.diskStorage({
+//         destination: function (req, file, cb) {
+//                 cb(null, "public/uploads"); // Directory to save uploaded files
+//         },
+//         filename: function (req, file, cb) {
+//                 const ext = file.mimetype.split("/")[1];
+//                 cb(
+//                         null,
+//                         `user-${req.user.id}-${Date.now()}-${file.originalname}`,
+//                 );
+//         },
+// });
+
+const storage = new CloudinaryStorage({
+        cloudinary: cloudinary,
+        params: {
+                folder: "profile_pictures", // folder in your Cloudinary account
+                format: async (req, file) => file.mimetype.split("/")[1], // supports promises as well
+                public_id: (req, file) => {
+                        const userId = req.user.id;
+                        const timeStamp = Date.now();
+                        return `${userId}_${timeStamp}`;
+                },
         },
 });
 
@@ -40,12 +66,14 @@ function checkFileType(file, cb) {
 }
 
 // Initialize upload variable
-const upload = multer({
-        storage: storage,
-        fileFilter: function (req, file, cb) {
-                checkFileType(file, cb);
-        },
-});
+// const upload = multer({
+//         storage: storage,
+//         fileFilter: function (req, file, cb) {
+//                 checkFileType(file, cb);
+//         },
+// });
+
+const upload = multer({ storage: storage });
 
 exports.upload = upload;
 
@@ -127,22 +155,6 @@ exports.loginUser = catchAsync(async (req, res, next) => {
         const refreshToken = generateRefreshToken(user);
 
         // await user.updateOne({ refreshToken });
-
-        // const oneYear = 365 * 24 * 60 * 60 * 1000; // 1 year in milliseconds
-        // res.cookie("refreshToken", refreshToken, {
-        //         httpOnly: false,
-        //         secure: false,
-        //         path: "/",
-        //         domain: "localhost",
-        //         maxAge: oneYear,
-        // });
-
-        // res.cookie("refreshToken", refreshToken, {
-        //         httpOnly: true,
-        //         secure: false,
-        //         sameSite: "none",
-        //         path: "/",
-        // });
 
         res.cookie("refreshToken", refreshToken, {
                 httpOnly: true,
@@ -234,19 +246,26 @@ exports.createUser = catchAsync(async (req, res, next) => {
         if (user) {
                 return next(new AppError("User with email already exist", 400));
         }
+        console.log("Name, email, password", name, email, password);
+        const newUser = await User.create({ name, email, password });
 
-        const newUser = await User.create(req.body);
+        console.log(newUser);
 
         const accessToken = generateAccessToken(newUser);
         const refreshToken = generateRefreshToken(newUser);
 
-        await newUser.updateOne({ refreshToken });
+        res.cookie("refreshToken", refreshToken, {
+                httpOnly: true,
+                secure: false,
+                path: "/",
+        });
 
         res.status(201).json({
+                status: "Success",
                 userId: newUser._id,
                 name: newUser.name,
+                role: newUser.role,
                 accessToken,
-                refreshToken,
         });
 });
 

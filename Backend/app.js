@@ -23,6 +23,8 @@ const app = express();
                 credentials: true, // Allow credentials (cookies)
         }),
 );*/
+
+// console.log(cloudinary);
 // Array of allowed origins
 const allowedOrigins = [
         "http://192.168.100.53:5173",
@@ -43,6 +45,10 @@ const corsOptions = {
         },
         credentials: true,
 };
+
+console.log("-------------------------");
+// console.log("cloudinary", cloudinary);
+console.log("-------------------------");
 
 // Use CORS middleware with the configured options
 app.use(cors(corsOptions));
@@ -91,4 +97,5 @@ app.all("*", (req, res, next) => {
 //  Global Error Handling Middleware
 app.use(globalErrorHandler);
 
+// module.exports.cloudinary = cloudinary;
 module.exports = app;

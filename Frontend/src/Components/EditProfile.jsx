@@ -7,6 +7,7 @@ import API from "../Context/axiosSetup.js";
 import { useHasProfile } from "../Hooks/useHasProfile.js";
 import { useGetProfile } from "../Hooks/useGetProfile.js";
 import { formatDate } from "date-fns/format";
+import { Spinner } from "../Util Components/Spinner.jsx";
 
 export function EditProfile() {
         const { data: hasUserProfile } = useHasProfile();
@@ -15,7 +16,7 @@ export function EditProfile() {
         );
         const [profileImage, setProfileImage] = useState(() => {
                 if (hasUserProfile?.data?.profileId) {
-                        return profileData.data.profile.profilePictureUrl;
+                        return profileData.data.profile.profilePictureURL;
                 }
                 return "/Assets/profile.svg";
         });
@@ -86,13 +87,24 @@ export function EditProfile() {
                 return data;
         };
 
-        const { mutate } = useMutation({
+        const { mutate, status: createStatus } = useMutation({
                 mutationFn: createProfile,
-                onSuccess: async () => {
+                onSuccess: async (data) => {
                         // Invalidate the query to update hasProfile status
                         await queryClient.invalidateQueries({
                                 queryKey: ["hasProfile"],
                                 refetchType: "all",
+                        });
+                        queryClient.setQueryData(["profile"], (oldData) => {
+                                return {
+                                        status: data.status,
+                                        data: {
+                                                profile: {
+                                                        ...data.data.profile,
+                                                        shortStories: [],
+                                                },
+                                        },
+                                };
                         });
                         navigate("/club"); // Navigate to desired route on success
                 },
@@ -102,14 +114,38 @@ export function EditProfile() {
                 },
         });
 
-        const { mutate: editMutate } = useMutation({
+        const {
+                mutate: editMutate,
+                status: editingStatus,
+                error: editError,
+        } = useMutation({
                 mutationFn: editProfile,
-                onSuccess: async () => {
+                onSuccess: async (data) => {
                         // Invalidate the query to update hasProfile status
                         await queryClient.invalidateQueries({
                                 queryKey: ["hasProfile", "shortStories"],
                                 refetchType: "all",
                         });
+
+                        queryClient.setQueryData(["profile"], (oldData) => {
+                                return {
+                                        status: oldData.status,
+                                        data: {
+                                                profile: {
+                                                        ...data.data.profile,
+                                                        profilePictureURL:
+                                                                data.data
+                                                                        .profile
+                                                                        .profilePictureURL,
+                                                        profilePicturePublicId:
+                                                                data.data
+                                                                        .profile
+                                                                        .profilePicturePublicId,
+                                                },
+                                        },
+                                };
+                        });
+
                         navigate("/myProfile"); // Navigate to desired route on success
                 },
                 onError: (error) => {
@@ -141,6 +177,10 @@ export function EditProfile() {
         // if (hasUserProfile?.data?.profileId) {
         //         const { profile } = profileData.data;
         //         console.log(profile);
+        if (editingStatus === "pending" || createStatus === "pending") {
+                return <Spinner />;
+        }
+
         return (
                 <div className="editProfileRootContainer">
                         <div className="editProfileRootWrapper">
@@ -153,6 +193,9 @@ export function EditProfile() {
                                                                 <img
                                                                         src={
                                                                                 profileImage
+                                                                        }
+                                                                        loading={
+                                                                                "lazy"
                                                                         }
                                                                         alt=""
                                                                 />
@@ -214,10 +257,6 @@ export function EditProfile() {
                                                         placeholder="10/11/2024"
                                                         value={profileDate}
                                                         onChange={(e) => {
-                                                                console.log(
-                                                                        e.target
-                                                                                .value,
-                                                                );
                                                                 setProfileDate(
                                                                         e.target
                                                                                 .value,

@@ -2,6 +2,7 @@ const Profile = require("../models/profileModel");
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const { cloudinary } = require("./userController");
 
 // Create Profile
 exports.createProfile = catchAsync(async (req, res, next) => {
@@ -36,9 +37,11 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
         const userId = req.user.id;
 
         // Check if req.file exists and get the file name from the uploaded file
-        const profilePicture = req.file ? req.file.filename : undefined;
+        console.log(req.file);
+        const imageUrl = req?.file?.path;
+        const publicId = req?.file?.filename;
 
-        console.log(profilePicture);
+        console.log("Image Url and public Id", imageUrl, publicId);
 
         const updatedProfileData = {
                 dateOfBirth,
@@ -46,9 +49,45 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
                 name,
         };
 
+        console.log("Updated Profile data", updatedProfileData);
+
         // Only update profilePicture field if a new file was uploaded
-        if (profilePicture) {
-                updatedProfileData.profilePicture = profilePicture;
+        if (imageUrl && publicId) {
+                updatedProfileData.profilePictureURL = imageUrl;
+                updatedProfileData.profilePicturePublicId = publicId;
+        }
+
+        // Fetch the current profile to check if a profile picture already exists
+        const currentProfile = await Profile.findOne({ userId });
+
+        if (!currentProfile) {
+                return next(new AppError("Profile not found", 404));
+        }
+
+        // Only update profilePicture field if a new file was uploaded
+        if (imageUrl && publicId) {
+                // If there is an existing profile picture, delete it from Cloudinary
+                if (currentProfile.profilePicturePublicId) {
+                        await cloudinary.uploader.destroy(
+                                currentProfile.profilePicturePublicId,
+                                function (error, result) {
+                                        if (error) {
+                                                console.log(
+                                                        "Error deleting image from Cloudinary",
+                                                        error,
+                                                );
+                                        } else {
+                                                console.log(
+                                                        "Previous image deleted from Cloudinary",
+                                                        result,
+                                                );
+                                        }
+                                },
+                        );
+                }
+
+                updatedProfileData.profilePictureURL = imageUrl;
+                updatedProfileData.profilePicturePublicId = publicId;
         }
 
         const updatedProfile = await Profile.findOneAndUpdate(
@@ -73,9 +112,11 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
 exports.createProfileWithUpload = catchAsync(async (req, res, next) => {
         const { dateOfBirth, bio, name } = req.body;
         const userId = req.user.id;
+        const imageUrl = req.file.path;
+        const publicId = req.file.filename;
 
         // Get the file name from the uploaded file
-        const profilePicture = req.file ? req.file.filename : undefined;
+        // Only update profilePicture field if a new file was uploaded
 
         // Check if the user already has a profile
         const existingProfile = await Profile.findOne({ userId });
@@ -97,8 +138,9 @@ exports.createProfileWithUpload = catchAsync(async (req, res, next) => {
                 bio,
         };
 
-        if (profilePicture) {
-                profileData.profilePicture = profilePicture;
+        if (imageUrl && publicId) {
+                profileData.profilePictureURL = imageUrl;
+                profileData.profilePicturePublicId = publicId;
         }
 
         const newProfile = await Profile.create(profileData);
@@ -135,10 +177,6 @@ exports.getProfile = catchAsync(async (req, res, next) => {
         const profileData = profile.toObject();
 
         // Construct the URL for the profile picture if it exists
-        if (profile.profilePicture) {
-                profileData.profilePictureUrl = `${req.protocol}://${req.get("host")}/uploads/${profile.profilePicture}`;
-        }
-
         res.status(200).json({
                 status: "success",
                 data: {
@@ -158,11 +196,6 @@ exports.getProfileById = catchAsync(async (req, res, next) => {
         }
 
         const profileData = profile.toObject();
-
-        // Construct the URL for the profile picture if it exists
-        if (profile.profilePicture) {
-                profileData.profilePictureUrl = `${req.protocol}://${req.get("host")}/uploads/${profile.profilePicture}`;
-        }
 
         res.status(200).json({
                 status: "success",

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import API from "../Context/axiosSetup.js";
 import { toast } from "react-toastify";
 
@@ -20,9 +20,16 @@ const fetchProfileById = async (profileId) => {
 };
 
 export const useGetProfile = (profileId) => {
+        const queryClient = useQueryClient();
         return useQuery({
                 queryKey: ["profile"],
                 queryFn: () => fetchProfileById(profileId),
+                onSuccess: async () => {
+                        // await queryClient.invalidateQueries({
+                        //         queryKey: ["profile"],
+                        //         refetchType: "all",
+                        // });
+                },
                 onError: (e) => {
                         toast.success(`${e.message}`, {
                                 style: {
@@ -33,7 +40,7 @@ export const useGetProfile = (profileId) => {
                                 autoClose: 1000,
                         });
                 },
-
+                refetchOnMount: true,
                 enabled: !!profileId, // Only run this query if profileId is not null
                 staleTime: 1000 * 60 * 5, // 5 minutes
         });

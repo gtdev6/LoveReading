@@ -5,6 +5,8 @@ const profileSchema = new mongoose.Schema({
         userId: { type: Schema.Types.ObjectId, ref: "User" },
         name: { type: String },
         profilePicture: { type: String },
+        profilePictureURL: { type: String },
+        profilePicturePublicId: { type: String },
         dateOfBirth: { type: Date },
         bio: { type: String },
         shortStories: [{ type: Schema.Types.ObjectId, ref: "ShortStory" }],
