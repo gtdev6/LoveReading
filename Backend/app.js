@@ -52,7 +52,7 @@ const corsOptions = {
 app.use(
         cors({
                 origin: allowedOrigins,
-                methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
+                methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], // Allowed HTTP methods
                 allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
                 credentials: true,
                 optionsSuccessStatus: 200,
