@@ -9,7 +9,6 @@ export const login = async (credentials) => {
         // const response = await axios.get(`${API_URL}/login`, credentials);
         const res = await fetch(`${API_URL}/login`, {
                 method: "POST",
-                credentials: "include", // This ensures cookies are sent with the request
                 headers: {
                         "Content-Type": "application/json",
                 },
