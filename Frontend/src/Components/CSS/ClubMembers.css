@@ -89,6 +89,8 @@
         align-items: center;
         justify-content: flex-start;
         gap: 0.5rem;
+        overflow: hidden;
+
 }
 
 .cMListItemProfileImageContainer {
@@ -118,15 +120,18 @@
 .cMListItemDescContainer {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         padding: 0.5rem;
-        min-width: 65%;
+        min-width: calc(100% - calc(15% + 8rem));
+        height: 80%;
 
         border: 1px solid rgba(118, 69, 59, 0.4);
         border-radius: 0.5rem;
 }
 
 .cMListItemDescName {
-        flex-grow: 2;
+        /*flex-grow: 2;*/
         font-family: "Nunito", serif;
         font-weight: 800;
         font-size: 1.5rem;
@@ -142,24 +147,28 @@
 }
 
 .cMListItemViewBtnWrapper {
-        min-height: 6rem;
+        min-height: fit-content;
         height: 100%;
         max-width: 20%;
         /*border: 1px solid #76453b;*/
-
+        padding: 0 1rem;
         display: flex;
         justify-content: center;
+        align-items: center;
 }
 
 .cMListItemViewBtnWrapper button {
-        min-height: 100%;
-        font-size: 1.4rem;
+        /*min-height: 100%;*/
+        min-width: 6rem;
+        font-size: 1.2rem;
         font-family: "Nunito", serif;
         font-weight: 800;
         color: #76453b;
         border-radius: 1rem;
         border: 1px solid #76453b;
         background-color: white;
+        padding: 1rem;
+        height: fit-content;
 
         filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.3));
 }
@@ -172,4 +181,13 @@
 
 .cMListItemViewBtnWrapper button:active {
         transform: translateX(1px) translateY(1px);
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        /* Styles for horizontal tablets */
+        .cMListItemViewBtnWrapper button{
+                font-size: 1.2rem;
+                border: 2px solid red;
+        }
 }
