@@ -197,6 +197,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
 }
 
 .menuTab span {
@@ -208,9 +209,9 @@
         gap: 0.5rem;
 }
 
-.menuTab span object {
-        max-height: 70%;
-}
+/*.menuTab span svg {*/
+/*        max-height: 70%;*/
+/*}*/
 
 .menuTab svg {
         max-height: 1.8rem;
