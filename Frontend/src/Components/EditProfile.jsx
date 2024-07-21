@@ -133,6 +133,10 @@ export function EditProfile() {
                                         data: {
                                                 profile: {
                                                         ...data.data.profile,
+                                                        shortStories:
+                                                                oldData.data
+                                                                        .profile
+                                                                        .shortStories,
                                                         profilePictureURL:
                                                                 data.data
                                                                         .profile
