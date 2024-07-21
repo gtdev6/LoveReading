@@ -31,8 +31,12 @@ const allowedOrigins = [
         "http://localhost:5173",
         "https://love-reading-g2xx42s0a-ghulam-tahirs-projects.vercel.app",
         "https://love-reading.vercel.app",
+        "https://love-reading.vercel.app/",
+        "https://love-reading.vercel.app/*",
         "https://love-reading-git-main-ghulam-tahirs-projects.vercel.app",
         "https://love-reading-z8qaezcaz-ghulam-tahirs-projects.vercel.app",
+        "https://love-reading-git-main-ghulam-tahirs-projects.vercel.app/",
+        "*",
 ];
 
 const corsOptions = {
@@ -47,8 +51,8 @@ const corsOptions = {
 };
 
 // Use CORS middleware with the configured options
-// app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+// app.use(cors());
 
 app.use(cookieParser());
 app.use(express.json());

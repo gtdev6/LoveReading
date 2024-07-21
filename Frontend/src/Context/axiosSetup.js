@@ -49,7 +49,6 @@ async function checkUserRole(auth, setAuth) {
 export const setupAxiosInterceptors = ({ auth, setAuth, navigate }) => {
         // const { auth, setAuth } = useAuth(); // Get auth state and setter from useAuth hook
         // const navigate = useNavigate();
-        console.log("Auth: ", auth);
         // Request interceptor
         API.interceptors.request.use(
                 async (config) => {
