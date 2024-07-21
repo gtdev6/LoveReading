@@ -211,13 +211,10 @@ exports.getAllUsersWithProfiles = catchAsync(async (req, res, next) => {
                                 bio: user.profile.bio,
                                 shortStories: user.profile.shortStories,
                         },
-                        profilePictureURL: `${req.protocol}://${req.get("host")}/uploads/${user.profile.profilePicture}`,
+                        profilePictureURL: user.profile.profilePictureURL,
                         id: user._id,
                 };
         });
-
-        console.log(usersWithProfileUrls);
-        // console.log(JSON.stringify(usersWithProfileUrls));
 
         res.status(200).json({
                 status: "Success",

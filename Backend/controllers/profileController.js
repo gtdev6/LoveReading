@@ -195,12 +195,10 @@ exports.getProfileById = catchAsync(async (req, res, next) => {
                 return next(new AppError("Profile not found", 404));
         }
 
-        const profileData = profile.toObject();
-
         res.status(200).json({
                 status: "success",
                 data: {
-                        profile: profileData,
+                        profile: profile,
                 },
         });
 });

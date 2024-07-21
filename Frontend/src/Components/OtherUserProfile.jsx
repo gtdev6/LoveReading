@@ -47,10 +47,13 @@ export function OtherUserProfile() {
                                         <div className="userProfileUserInfoContainer">
                                                 <div className="userProfileInfoRoot">
                                                         <div className="userProfileImageContainer">
-                                                                {profile.profilePictureUrl ? (
+                                                                {profile.profilePictureURL ? (
                                                                         <img
                                                                                 src={
-                                                                                        profile.profilePictureUrl
+                                                                                        profile.profilePictureURL
+                                                                                }
+                                                                                loading={
+                                                                                        "lazy"
                                                                                 }
                                                                                 alt=""
                                                                         />
