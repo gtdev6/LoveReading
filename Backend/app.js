@@ -46,12 +46,9 @@ const corsOptions = {
         credentials: true,
 };
 
-console.log("-------------------------");
-// console.log("cloudinary", cloudinary);
-console.log("-------------------------");
-
 // Use CORS middleware with the configured options
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(cookieParser());
 app.use(express.json());
